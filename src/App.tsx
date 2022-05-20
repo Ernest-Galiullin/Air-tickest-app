@@ -4,7 +4,6 @@ import Transparents from './components/organisms/Transparents'
 import Companies from './components/organisms/Companies'
 import Tickets from './components/organisms/Tickets'
 import Button from './components/atoms/Button'
-import 'bootstrap-4-grid'
 
 function App() {
   return (
@@ -13,11 +12,11 @@ function App() {
         <Logo />
       </div>
       <div className="row">
-        <div className="col-4">
+        <div className="one-third column">
           <Transparents />
           <Companies />
         </div>
-        <div className="col-8">
+        <div className="two-thirds column">
           <Tabs />
           <Tickets />
           <Button text={'Показать еще 5 билетов'} />

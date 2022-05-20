@@ -31,7 +31,7 @@ export default function Transparents() {
     }
   ])
   return (
-    <div className="transparents">
+    <div className="u-full-width transparents">
       <div className="transparents__title">Количество пересадок</div>
       <div className="transparents__list">
         {transparents.map((t, idx) => (
