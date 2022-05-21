@@ -4,6 +4,7 @@ import Transparents from './components/organisms/Transparents'
 import Companies from './components/organisms/Companies'
 import Tickets from './components/organisms/Tickets'
 import Button from './components/atoms/Button'
+import Search from 'components/organisms/Search'
 import './App.scss'
 
 function App() {
@@ -11,6 +12,9 @@ function App() {
     <div className="container">
       <div className="logo">
         <Logo />
+      </div>
+      <div className="row">
+        <Search />
       </div>
       <div className="row">
         <div className="one-third column">
