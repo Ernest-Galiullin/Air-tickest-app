@@ -4,6 +4,7 @@ import Transparents from './components/organisms/Transparents'
 import Companies from './components/organisms/Companies'
 import Tickets from './components/organisms/Tickets'
 import Button from './components/atoms/Button'
+import './App.scss'
 
 function App() {
   return (

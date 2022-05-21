@@ -1,4 +1,5 @@
-import Radio from '../atoms/Radio'
+import Radio from '../../atoms/Radio'
+import './style.scss'
 
 export default function Companies() {
   return (

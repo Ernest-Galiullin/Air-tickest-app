@@ -1,0 +1,13 @@
+.transparents {
+  background-color: #fff;
+  border-radius: 5px;
+  white-space: nowrap;
+  margin-bottom: 20px;
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    padding: 20px 20px 20px;
+  }
+  &__list {
+  }
+}

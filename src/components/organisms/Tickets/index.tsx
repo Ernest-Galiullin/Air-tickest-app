@@ -1,6 +1,7 @@
 import {useState} from 'react'
-import Ticket from '../molecules/Ticket'
-import img from '../../assets/companies/s7.png'
+import Ticket from '../../molecules/Ticket'
+import img from 'assets/companies/s7.png'
+import './style.scss'
 
 type ITicket = {
   price: string
@@ -63,12 +64,12 @@ export default function Tickets() {
         return (
           <Ticket
             key={idx + t.lenghtTime}
+            img={img}
             price={t.price}
             routeTime={t.routeTime}
             route={t.route}
             lenghtTime={t.lenghtTime}
             transfer={t.transfer}
-            img={img}
           />
         )
       })}
