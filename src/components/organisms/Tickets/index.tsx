@@ -1,78 +1,41 @@
-import {useState} from 'react'
+import {useContext, useEffect} from 'react'
+import {useQuery} from 'react-query'
+import axios from 'axios'
+import {useActor} from '@xstate/react'
+import {ITicket} from 'interfaces'
 import Ticket from '../../molecules/Ticket'
-import img from 'assets/companies/s7.png'
+import {GlobalStateContext} from 'StateContext'
+import Button from 'components/atoms/Button'
 import './style.scss'
 
-type ITicket = {
-  price: string
-  route: string
-  routeTime: string
-  lenghtTime: string
-  transfer: string
-  transferAirport?: string
-}
+const url = 'https://api.npoint.io/163b5e66df9f2741243e'
+
+const fetchTickets = () => axios.get(url).then(res => res.data)
 
 export default function Tickets() {
-  const [tickests] = useState<ITicket[]>([
-    {
-      price: '13 400',
-      route: 'MOW – HKT',
-      routeTime: '10:45 – 08:00',
-      lenghtTime: '21ч 15м',
-      transfer: 'HKG, JNB'
-    },
-    {
-      price: '13 400',
-      route: 'MOW – HKT',
-      routeTime: '10:45 – 08:00',
-      lenghtTime: '21ч 15м',
-      transfer: 'HKG, JNB'
-    },
-    {
-      price: '13 400',
-      route: 'MOW – HKT',
-      routeTime: '10:45 – 08:00',
-      lenghtTime: '21ч 15м',
-      transfer: 'HKG, JNB'
-    },
-    {
-      price: '13 400',
-      route: 'MOW – HKT',
-      routeTime: '10:45 – 08:00',
-      lenghtTime: '21ч 15м',
-      transfer: 'HKG, JNB'
-    },
-    {
-      price: '13 400',
-      route: 'MOW – HKT',
-      routeTime: '10:45 – 08:00',
-      lenghtTime: '21ч 15м',
-      transfer: 'HKG, JNB'
-    },
-    {
-      price: '13 400',
-      route: 'MOW – HKT',
-      routeTime: '10:45 – 08:00',
-      lenghtTime: '21ч 15м',
-      transfer: 'HKG, JNB'
+  const {status, isLoading, error, data} = useQuery('tickets', fetchTickets)
+  const {stateService} = useContext(GlobalStateContext)
+  const [state] = useActor(stateService)
+
+  useEffect(() => {
+    if (status === 'success') {
+      stateService.send('UPDATE_TICKETS', {data})
+    } else if (status === 'error') {
+      stateService.send('DATA_LOAD_ERROR')
     }
-  ])
+  }, [data, status])
+
+  if (isLoading) return <span>Loading...</span>
+  if (error) return <span>Error</span>
 
   return (
-    <div className="tickets__list">
-      {tickests.map((t, idx) => {
-        return (
-          <Ticket
-            key={idx + t.lenghtTime}
-            img={img}
-            price={t.price}
-            routeTime={t.routeTime}
-            route={t.route}
-            lenghtTime={t.lenghtTime}
-            transfer={t.transfer}
-          />
-        )
-      })}
-    </div>
+    <>
+      <div className="tickets__list">
+        {state.context.tickets.map((t: ITicket) => {
+          return <Ticket key={t.id} {...t} />
+        })}
+      </div>
+      <Button>Показать еще 5 билетов</Button>
+    </>
   )
 }

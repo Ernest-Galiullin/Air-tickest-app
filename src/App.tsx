@@ -1,10 +1,9 @@
-import Logo from './components/atoms/Logo'
-import Tabs from './components/organisms/Tabs'
-import Transparents from './components/organisms/Transparents'
-import Companies from './components/organisms/Companies'
-import Tickets from './components/organisms/Tickets'
-import Button from './components/atoms/Button'
-import Search from 'components/organisms/Search'
+import Logo from 'components/atoms/Logo'
+import Tabs from 'components/organisms/Tabs'
+import Transparents from 'components/organisms/Transparents'
+import Companies from 'components/organisms/Companies'
+import Tickets from 'components/organisms/Tickets'
+import SearchForm from 'components/organisms/SearchForm'
 import './App.scss'
 
 function App() {
@@ -14,7 +13,8 @@ function App() {
         <Logo />
       </div>
       <div className="row">
-        <Search />
+        <SearchForm />
+        <hr />
       </div>
       <div className="row">
         <div className="one-third column">
@@ -24,7 +24,6 @@ function App() {
         <div className="two-thirds column">
           <Tabs />
           <Tickets />
-          <Button text={'Показать еще 5 билетов'} />
         </div>
       </div>
     </div>

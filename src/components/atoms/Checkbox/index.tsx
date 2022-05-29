@@ -1,26 +1,31 @@
-import {useState} from 'react'
+import {ReactNode, useState} from 'react'
 import cn from 'classnames'
 import './style.scss'
 
 type CheckboxProps = {
   id: string
-  text: string
+  children: ReactNode
   checked: boolean
-  onChange: (value: any) => void
 }
 
-export default function Checkbox({id, text, checked, onChange}: CheckboxProps) {
+export default function Checkbox({id, children, checked}: CheckboxProps) {
+  const [state, setState] = useState(checked)
+
+  const handleChange = (event: any) => {
+    setState(event.target.checked)
+  }
+
   return (
-    <label htmlFor={text} className={'chekbox-label'}>
+    <label className="chekbox-label">
       <input
-        className={'chekbox-input'}
+        className="chekbox-input"
         type="checkbox"
-        defaultChecked={checked}
         id={id}
-        onChange={e => onChange(e)}
+        defaultChecked={state}
+        onChange={event => handleChange(event)}
       />
-      <span className={cn('chekbox-checkmark', {'active': checked})}></span>
-      {text}
+      <span className={cn('chekbox-checkmark', state && 'active')}></span>
+      {children}
     </label>
   )
 }

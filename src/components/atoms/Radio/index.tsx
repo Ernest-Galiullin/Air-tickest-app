@@ -1,13 +1,14 @@
+import {ReactNode} from 'react'
 import './style.scss'
 type RadioProps = {
-  text: string
+  children: ReactNode
 }
-export default function Radio({text}: RadioProps) {
+export default function Radio({children}: RadioProps) {
   return (
     <label className="radio-label">
-      <input className="radio-input" type="radio" name="radio" />
+      <input className="radio-input" type="radio" />
       <span className="radio-checkmark"></span>
-      {text}
+      {children}
     </label>
   )
 }

@@ -4,33 +4,35 @@ import './style.scss'
 
 type ITransparents = {
   id: string
-  text: string
+  title: string
   checked: boolean
 }
 
+const mock = [
+  {
+    id: '1',
+    title: 'Без пересадок',
+    checked: false
+  },
+  {
+    id: '2',
+    title: '1 пересадка',
+    checked: false
+  },
+  {
+    id: '3',
+    title: '2 пересадки',
+    checked: false
+  },
+  {
+    id: '4',
+    title: '3 пересадки',
+    checked: false
+  }
+]
+
 export default function Transparents() {
-  const [transparents, setTransparents] = useState<ITransparents[]>([
-    {
-      id: '1',
-      text: 'Без пересадок',
-      checked: true
-    },
-    {
-      id: '2',
-      text: '1 пересадка',
-      checked: true
-    },
-    {
-      id: '3',
-      text: '2 пересадки',
-      checked: true
-    },
-    {
-      id: '4',
-      text: '3 пересадки',
-      checked: false
-    }
-  ])
+  const [transparents, setTransparents] = useState<ITransparents[]>(mock)
 
   const handleChange = (e: any): void => {
     const currentTransparents = transparents.map(t => {
@@ -43,7 +45,9 @@ export default function Transparents() {
   }
 
   const transparentsList = transparents.map(t => (
-    <Checkbox key={t.id} {...t} onChange={handleChange} />
+    <Checkbox key={t.id} id={t.id} checked={t.checked}>
+      {t.title}
+    </Checkbox>
   ))
 
   return (

@@ -1,8 +1,9 @@
+import React, {ReactNode} from 'react'
 import './style.scss'
 type ButtonProps = {
-  text: string
+  children: ReactNode
 }
 
-export default function Button({text}: ButtonProps) {
-  return <button className={'btn'}>{text}</button>
+export default function Button({children}: ButtonProps) {
+  return <button className="btn">{children}</button>
 }
