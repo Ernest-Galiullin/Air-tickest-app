@@ -1,0 +1,38 @@
+.ticket {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  &__body {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__price {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--blue-color);
+  }
+  &__route {
+    font-size: 12px;
+    font-weight: 600;
+    &__time {
+    }
+  }
+  &__length {
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+.route__title,
+.lenght__title,
+.transfer__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-color);
+}

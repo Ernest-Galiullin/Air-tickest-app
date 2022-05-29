@@ -1,10 +1,10 @@
-import Logo from './components/atoms/Logo'
-import Tabs from './components/organisms/Tabs'
-import Transparents from './components/organisms/Transparents'
-import Companies from './components/organisms/Companies'
-import Tickets from './components/organisms/Tickets'
-import Button from './components/atoms/Button'
-import 'bootstrap-4-grid'
+import Logo from 'components/atoms/Logo'
+import Tabs from 'components/organisms/Tabs'
+import Transparents from 'components/organisms/Transparents'
+import Companies from 'components/organisms/Companies'
+import Tickets from 'components/organisms/Tickets'
+import SearchForm from 'components/organisms/SearchForm'
+import './App.scss'
 
 function App() {
   return (
@@ -13,14 +13,17 @@ function App() {
         <Logo />
       </div>
       <div className="row">
-        <div className="col-4">
+        <SearchForm />
+        <hr />
+      </div>
+      <div className="row">
+        <div className="one-third column">
           <Transparents />
           <Companies />
         </div>
-        <div className="col-8">
+        <div className="two-thirds column">
           <Tabs />
           <Tickets />
-          <Button text={'Показать еще 5 билетов'} />
         </div>
       </div>
     </div>

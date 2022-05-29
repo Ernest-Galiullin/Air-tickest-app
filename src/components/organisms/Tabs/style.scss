@@ -1,0 +1,27 @@
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  .tab {
+    height: 50px;
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    font-family: Open Sans;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      transition: all 0.3s ease 0s;
+      background-color: var(--blue-hover-color);
+    }
+    &.active {
+      background-color: var(--blue-color);
+      color: #fff;
+    }
+  }
+}
