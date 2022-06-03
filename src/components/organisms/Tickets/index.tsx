@@ -28,13 +28,12 @@ export default function Tickets() {
   if (isLoading) return <span>Loading...</span>
   if (error) return <span>Error</span>
 
+  const ticketList = state.context.tickets.map((t: ITicket) => {
+    return <Ticket key={t.id} {...t} />
+  })
   return (
     <>
-      <div className="tickets__list">
-        {state.context.tickets.map((t: ITicket) => {
-          return <Ticket key={t.id} {...t} />
-        })}
-      </div>
+      <div className="tickets__list">{ticketList}</div>
       <Button>Показать еще 5 билетов</Button>
     </>
   )
