@@ -66,7 +66,9 @@ export default function Ticket(props: TicketProps) {
           <div className="transfer__title">
             {isTransplants(props.info.stops.length)
               ? 'Без пересадок'
-              : `${props.info.stops.length} пересадки`}
+              : `${props.info.stops.length} ${
+                  props.info.stops.length === 1 ? 'пересадка' : 'пересадки'
+                }`}
           </div>
           <div className="transfer__body">
             <b>
