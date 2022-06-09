@@ -1,54 +1,68 @@
 import SwapIcon from 'components/atoms/SwapIcon'
-import Calendar from 'components/molecules/Calendar'
-import {useInputCalendar} from './hooks'
+import Select from 'components/atoms/Select'
+import InputDate from 'components/molecules/InputDate'
+import { useAppDispatch, useAppSelector } from 'store/hooks'
+import {
+  swapInputValue,
+  updateDestination,
+  updateOrigin
+} from 'store/filterSlice'
 import './style.scss'
 
 export default function SearchForm() {
-  const inputOrigin = useInputCalendar('')
-  const inputReturn = useInputCalendar('')
+  const { selectedOriginCity, selectedDestinationCity } = useAppSelector(
+    state => state.filter
+  )
+  const dispatch = useAppDispatch()
+
+  const handleChangeInput = (
+    selectedOption: {
+      label: string
+      value: string
+    },
+    selectName: string
+  ) => {
+    if (selectName === 'origin') {
+      dispatch(updateOrigin(selectedOption.value))
+    } else {
+      dispatch(updateDestination(selectedOption.value))
+    }
+  }
+
+  const handleClickSwap = () => {
+    dispatch(swapInputValue({ selectedOriginCity, selectedDestinationCity }))
+  }
+
+  // useEffect(() => {}, [selectedOriginCity, selectedDestinationCity])s
 
   return (
     <form className="search-form">
       <div className="search-form__column">
-        <input
-          className="search-form__input"
-          type="text"
+        <Select
+          value={selectedOriginCity}
+          name="origin"
+          handleChange={handleChangeInput}
+          borderTopLeftRadius="5px"
+          borderBottomLeftRadius="5px"
           placeholder="Откуда"
         />
         <div className="search-form__swap-place">
-          <SwapIcon />
+          <SwapIcon handleClick={handleClickSwap} />
         </div>
       </div>
       <div className="search-form__column">
-        <input className="search-form__input" type="text" placeholder="Куда" />
+        <Select
+          value={selectedDestinationCity}
+          name="destination"
+          handleChange={handleChangeInput}
+          placeholder="Куда"
+        />
       </div>
       <div className="search-form__column --date">
-        <input
-          className="search-form__input"
-          value={inputOrigin.inputValue}
-          onClick={inputOrigin.onClick}
-          type="text"
-          placeholder="Когда"
-          readOnly
-        />
-        {inputOrigin.inputCalendarValue && (
-          <Calendar onChange={inputOrigin.onChange} />
-        )}
-        <span className="date"></span>
+        <InputDate id="destination" key={'destination'} placeholder="Когда" />
       </div>
       <div className="search-form__column --date">
-        <input
-          className="search-form__input"
-          value={inputReturn.inputValue}
-          onClick={inputReturn.onClick}
-          type="text"
-          placeholder="Обратно"
-          readOnly
-        />
-        {inputReturn.inputCalendarValue && (
-          <Calendar onChange={inputReturn.onChange} />
-        )}
-        <span className="date"></span>
+        <InputDate key={'return'} id="return" placeholder="Обратно" />
       </div>
     </form>
   )

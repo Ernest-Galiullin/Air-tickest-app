@@ -1,3 +1,5 @@
+import './style.scss'
+
 export default function Logo() {
   return (
     <svg
@@ -5,7 +7,8 @@ export default function Logo() {
       height="89"
       viewBox="0 0 82 89"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g filter="url(#filter0_d_2_143)">
         <path
           fillRule="evenodd"
@@ -35,7 +38,8 @@ export default function Logo() {
         x="11"
         y="10"
         width="60"
-        height="60">
+        height="60"
+      >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -84,7 +88,8 @@ export default function Logo() {
         x="24"
         y="23"
         width="33"
-        height="34">
+        height="34"
+      >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -135,7 +140,8 @@ export default function Logo() {
           width="66"
           height="66"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB">
+          colorInterpolationFilters="sRGB"
+        >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
@@ -168,7 +174,8 @@ export default function Logo() {
           width="82"
           height="82"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB">
+          colorInterpolationFilters="sRGB"
+        >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
