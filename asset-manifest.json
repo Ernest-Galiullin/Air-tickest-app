@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Air-tickest-app/static/css/main.e5edbb1c.css",
+    "main.js": "/Air-tickest-app/static/js/main.62b561b9.js",
+    "index.html": "/Air-tickest-app/index.html",
+    "static/media/calendar.svg": "/Air-tickest-app/static/media/calendar.48162e0eb105346867d4.svg",
+    "static/media/shape.svg": "/Air-tickest-app/static/media/shape.68eaed38c8165bae30a5.svg",
+    "main.e5edbb1c.css.map": "/Air-tickest-app/static/css/main.e5edbb1c.css.map",
+    "main.62b561b9.js.map": "/Air-tickest-app/static/js/main.62b561b9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e5edbb1c.css",
+    "static/js/main.62b561b9.js"
+  ]
+}
