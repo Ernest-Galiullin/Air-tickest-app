@@ -30,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +54,8 @@
   },
   "devDependencies": {
     "@types/lodash.orderby": "^4.6.7",
-    "@types/react-calendar": "^3.5.1"
-  }
+    "@types/react-calendar": "^3.5.1",
+    "gh-pages": "^4.0.0"
+  },
+  "homepage": "https://Ernest-Galiullin.github.io/Air-tickest-app"
 }
