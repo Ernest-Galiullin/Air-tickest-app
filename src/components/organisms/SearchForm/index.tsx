@@ -56,11 +56,11 @@ export default function SearchForm() {
           placeholder="Куда"
         />
       </div>
-      <div className="search-form__column --date">
-        <InputDate id="destination" key={'destination'} placeholder="Когда" />
+      <div className="search-form__column search-form__column--date">
+        <InputDate id="destination" placeholder="Когда" />
       </div>
-      <div className="search-form__column --date">
-        <InputDate key={'return'} id="return" placeholder="Обратно" />
+      <div className="search-form__column search-form__column--date">
+        <InputDate id="return" placeholder="Обратно" />
       </div>
     </form>
   )

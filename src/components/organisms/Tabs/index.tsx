@@ -21,7 +21,7 @@ export default function Tabs() {
     let filtredData = orderBy(tickets, sortType, 'asc')
     dispatch(updateFiltredTickets(filtredData))
     // eslint-disable-next-line
-  }, [tabs, sortType, tickets])
+  }, [tabs])
 
   return (
     <div className="tabs u-full-width">

@@ -1,16 +1,1 @@
-.--date {
-  position: relative;
-  & input {
-    cursor: pointer;
-  }
-  & input:focus::placeholder {
-    opacity: 1;
-  }
-  & .date {
-    position: absolute;
-    right: 5px;
-    width: 20px;
-    height: 20px;
-    background: url('../../../assets/calendar.svg') 0 0 no-repeat;
-  }
-}
+
