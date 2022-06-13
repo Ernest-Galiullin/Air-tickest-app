@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
+import { ReactNode, SyntheticEvent } from 'react'
 import './style.scss'
 type ButtonProps = {
   children: ReactNode
-  onClick: (event?: any) => void
+  onClick: (event?: SyntheticEvent<HTMLButtonElement>) => void
 }
 
 export default function Button({ children, onClick }: ButtonProps) {

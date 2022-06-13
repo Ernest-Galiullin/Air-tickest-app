@@ -38,16 +38,13 @@ export default function SelectInput(props: IProp) {
   const [filtredOptions, setFiltredOptions] = useState(options)
 
   useEffect(() => {
-    // setSelectValue(props.value)
-  })
-
-  useEffect(() => {
     setFiltredOptions(
       options.filter(
         ({ value }) =>
           value !== selectedOriginCity && value !== selectedDestinationCity
       )
     )
+    // eslint-disable-next-line
   }, [selectedOriginCity, selectedDestinationCity])
 
   return (

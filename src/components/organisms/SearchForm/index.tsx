@@ -33,8 +33,6 @@ export default function SearchForm() {
     dispatch(swapInputValue({ selectedOriginCity, selectedDestinationCity }))
   }
 
-  // useEffect(() => {}, [selectedOriginCity, selectedDestinationCity])s
-
   return (
     <form className="search-form">
       <div className="search-form__column">

@@ -36,7 +36,6 @@ export type TCityCodes =
   | 'LOS'
   | 'EKV'
   | 'EKT'
-  | ''
 
 export interface ICompany {
   id: string

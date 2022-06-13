@@ -20,10 +20,11 @@ export default function Tabs() {
   useEffect(() => {
     let filtredData = orderBy(tickets, sortType, 'asc')
     dispatch(updateFiltredTickets(filtredData))
-  }, [tabs])
+    // eslint-disable-next-line
+  }, [tabs, sortType, tickets])
 
   return (
-    <div className={'tabs u-full-width'}>
+    <div className="tabs u-full-width">
       {tabs.map(({ title, isActive, id }) => (
         <div
           className={cn('tab', { 'active': isActive })}

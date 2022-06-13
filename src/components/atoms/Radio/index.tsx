@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import { ReactNode, SyntheticEvent } from 'react'
 import { useAppSelector } from 'store/hooks'
 import cn from 'classnames'
 import './style.scss'
 type RadioProps = {
   children: ReactNode
   id: string
-  onClick: (event: any) => void
+  onClick: (event: SyntheticEvent<HTMLLabelElement>) => void
 }
 export default function Radio({ children, id, onClick }: RadioProps) {
   const { selectedCompany } = useAppSelector(state => state.filter)

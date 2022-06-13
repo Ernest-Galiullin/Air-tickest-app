@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import cn from 'classnames'
 import './style.scss'
 
@@ -15,12 +15,6 @@ export default function Checkbox({
   onChange,
   id
 }: CheckboxProps) {
-  // const [state, setState] = useState(checked)
-
-  // const handleChange = (event: any) => {
-  //   setState(event.target.checked)
-  // }
-
   return (
     <label className="chekbox-label">
       <input
