@@ -3,7 +3,6 @@ import { updateDepartureDay, updateReturnDay } from 'store/filterSlice'
 import { useAppDispatch } from 'store/hooks'
 import Calendar from '../Calendar'
 import { getPrettyDate } from './functions'
-import './style.scss'
 
 interface IProps {
   id: string
