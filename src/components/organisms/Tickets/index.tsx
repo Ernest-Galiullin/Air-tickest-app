@@ -7,11 +7,8 @@ import Button from 'components/atoms/Button'
 import { updateTickets, updateFiltredTickets } from 'store/ticketsSlice'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import * as functions from './functions'
+import { fetchTickets } from 'api/apiTickets'
 import './style.scss'
-
-const url = 'https://api.npoint.io/163b5e66df9f2741243e'
-
-const fetchTickets = () => axios.get(url).then(res => res.data)
 
 export default function Tickets() {
   const { status, isLoading, error, data } = useQuery('tickets', fetchTickets)
@@ -41,32 +38,32 @@ export default function Tickets() {
   useEffect(() => {
     let filtredData = tickets
     // Complete Worked
-    if (selectedOriginCity && selectedDestinationCity) {
+    if (selectedOriginCity.value && selectedDestinationCity.value) {
       filtredData = functions.filterByOriginCity(
         filtredData,
-        selectedOriginCity
+        selectedOriginCity.value
       )
       filtredData = functions.filterByDestinationCity(
         filtredData,
-        selectedDestinationCity
+        selectedOriginCity.value
       )
-      if (selectedDepartureDay && selectedReturnDay) {
-        filtredData = functions.filterByDepartureDay(
-          filtredData,
-          selectedDepartureDay
-        )
-        filtredData = functions.filterByReturnDay(
-          filtredData,
-          selectedReturnDay
-        )
-      }
+      // if (selectedDepartureDay && selectedReturnDay) {
+      //   filtredData = functions.filterByDepartureDay(
+      //     filtredData,
+      //     selectedDepartureDay
+      //   )
+      //   filtredData = functions.filterByReturnDay(
+      //     filtredData,
+      //     selectedReturnDay
+      //   )
+      // }
     }
-    filtredData = functions.filterByCompanyId(filtredData, selectedCompany)
+    // filtredData = functions.filterByCompanyId(filtredData, selectedCompany)
     // In progress
-    filtredData = functions.filterByTransparents(
-      filtredData,
-      transparentsState.value
-    )
+    // filtredData = functions.filterByTransparents(
+    //   filtredData,
+    //   transparentsState.value
+    // )
 
     dispatch(updateFiltredTickets(filtredData))
   }, [

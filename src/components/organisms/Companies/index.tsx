@@ -1,17 +1,16 @@
 import { useEffect } from 'react'
-import axios from 'axios'
 import { useQuery } from 'react-query'
 import Radio from 'components/atoms/Radio'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import { updateCompanies, updateSelectCompany } from 'store/filterSlice'
+import { fetchCompanies } from 'api/apiCompanies'
 import './style.scss'
 
-const url = 'https://api.npoint.io/a1b1c28b32d9785bb26c'
-
-const fetchTickets = () => axios.get(url).then(response => response.data)
-
 export default function Companies() {
-  const { status, isLoading, error, data } = useQuery('companies', fetchTickets)
+  const { status, isLoading, error, data } = useQuery(
+    'companies',
+    fetchCompanies
+  )
   const companies = useAppSelector(state => state.filter.companies)
   const dispatch = useAppDispatch()
 
