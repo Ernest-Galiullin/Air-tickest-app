@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import axios from 'axios'
 import { ITicket } from 'interfaces'
 import Ticket from 'components/molecules/Ticket'
 import Button from 'components/atoms/Button'
@@ -45,30 +44,30 @@ export default function Tickets() {
       )
       filtredData = functions.filterByDestinationCity(
         filtredData,
-        selectedOriginCity.value
+        selectedDestinationCity.value
       )
-      // if (selectedDepartureDay && selectedReturnDay) {
-      //   filtredData = functions.filterByDepartureDay(
-      //     filtredData,
-      //     selectedDepartureDay
-      //   )
-      //   filtredData = functions.filterByReturnDay(
-      //     filtredData,
-      //     selectedReturnDay
-      //   )
-      // }
+
+      if (selectedDepartureDay && selectedReturnDay) {
+        filtredData = functions.filterByDepartureDay(
+          filtredData,
+          selectedDepartureDay
+        )
+        filtredData = functions.filterByReturnDay(
+          filtredData,
+          selectedReturnDay
+        )
+      }
     }
-    // filtredData = functions.filterByCompanyId(filtredData, selectedCompany)
-    // In progress
-    // filtredData = functions.filterByTransparents(
-    //   filtredData,
-    //   transparentsState.value
-    // )
+    filtredData = functions.filterByCompanyId(filtredData, selectedCompany)
+    filtredData = functions.filterByTransparents(
+      filtredData,
+      transparentsState.value
+    )
 
     dispatch(updateFiltredTickets(filtredData))
   }, [
-    selectedOriginCity,
-    selectedDestinationCity,
+    selectedOriginCity.value,
+    selectedDestinationCity.value,
     selectedDepartureDay,
     selectedReturnDay,
     selectedCompany,

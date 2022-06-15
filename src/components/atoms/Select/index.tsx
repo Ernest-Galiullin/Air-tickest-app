@@ -1,3 +1,4 @@
+import { ISelectOptions } from 'interfaces'
 import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { selectFilter } from 'store/filterSlice'
@@ -5,7 +6,7 @@ import { useAppSelector } from 'store/hooks'
 import './style.scss'
 
 interface ISelectProps {
-  value: string
+  selectedOptions: ISelectOptions
   handleChange(option: any, name: string): void
   name: string
   borderBottomRightRadius?: string
@@ -34,14 +35,15 @@ export default function SelectInput(props: ISelectProps) {
     { value: 'EKV', label: 'EKV' },
     { value: 'EKT', label: 'EKT' }
   ]
-  options.find(item => item.value === props.value)
+  options.find(item => item.value === props.selectedOptions.value)
   const [filtredOptions, setFiltredOptions] = useState(options)
 
   useEffect(() => {
     setFiltredOptions(
       options.filter(
         ({ value }) =>
-          value !== selectedOriginCity && value !== selectedDestinationCity
+          value !== selectedOriginCity.value &&
+          value !== selectedDestinationCity.value
       )
     )
     // eslint-disable-next-line
@@ -49,6 +51,11 @@ export default function SelectInput(props: ISelectProps) {
 
   return (
     <Select
+      value={
+        Object.values(props.selectedOptions).every(Boolean)
+          ? props.selectedOptions
+          : undefined
+      }
       placeholder={props.placeholder}
       name={props.name}
       classNamePrefix="custom-select"

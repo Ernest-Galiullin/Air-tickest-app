@@ -7,6 +7,7 @@ import {
   updateDestination,
   updateOrigin
 } from 'store/filterSlice'
+import { ISelectOptions } from 'interfaces'
 import './style.scss'
 
 export default function SearchForm() {
@@ -16,16 +17,13 @@ export default function SearchForm() {
   const dispatch = useAppDispatch()
 
   const handleChangeInput = (
-    selectedOption: {
-      label: string
-      value: string
-    },
+    selectedOption: ISelectOptions,
     selectName: string
   ) => {
     if (selectName === 'origin') {
-      dispatch(updateOrigin(selectedOption.value))
+      dispatch(updateOrigin(selectedOption))
     } else {
-      dispatch(updateDestination(selectedOption.value))
+      dispatch(updateDestination(selectedOption))
     }
   }
 
@@ -37,7 +35,7 @@ export default function SearchForm() {
     <form className="search-form">
       <div className="search-form__column">
         <Select
-          value={selectedOriginCity}
+          selectedOptions={selectedOriginCity}
           name="origin"
           handleChange={handleChangeInput}
           borderTopLeftRadius="5px"
@@ -50,7 +48,7 @@ export default function SearchForm() {
       </div>
       <div className="search-form__column">
         <Select
-          value={selectedDestinationCity}
+          selectedOptions={selectedDestinationCity}
           name="destination"
           handleChange={handleChangeInput}
           placeholder="Куда"

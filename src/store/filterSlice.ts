@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ICompany } from 'interfaces'
+import { ICompany, ISelectOptions } from 'interfaces'
 import { RootState } from 'store'
 
 interface IFilterState {
   companies: ICompany[]
-  selectedOriginCity: string
-  selectedDestinationCity: string
+  selectedOriginCity: ISelectOptions
+  selectedDestinationCity: ISelectOptions
   selectedCompany: string
   selectedDepartureDay: number | null
   selectedReturnDay: number | null
@@ -13,8 +13,8 @@ interface IFilterState {
 
 const initialState: IFilterState = {
   companies: [],
-  selectedOriginCity: '',
-  selectedDestinationCity: '',
+  selectedOriginCity: { value: '', label: '' },
+  selectedDestinationCity: { value: '', label: '' },
   selectedDepartureDay: null,
   selectedReturnDay: null,
   selectedCompany: ''

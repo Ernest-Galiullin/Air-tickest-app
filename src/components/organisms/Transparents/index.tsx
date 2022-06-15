@@ -10,7 +10,6 @@ export default function Transparents() {
 
   const handleChange = (event: SyntheticEvent<HTMLInputElement>): void => {
     if (!(event.target instanceof HTMLInputElement)) return
-
     const id = event.target.dataset.id
     dispatch(updateTransparents(id))
   }

@@ -29,7 +29,7 @@ export const transparentsSlice = createSlice({
     updateTransparents(state, action) {
       const id = action.payload
       state.transparents = state.transparents.map(item => {
-        if (item.id === id) {
+        if (item.id === Number(id)) {
           item.isChecked = !item.isChecked
           if (item.isChecked) {
             state.value.push(item.value)

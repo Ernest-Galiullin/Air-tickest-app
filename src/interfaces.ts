@@ -42,3 +42,8 @@ export interface ICompany {
   name: string
   logo: string
 }
+
+export interface ISelectOptions {
+  value: string
+  label: string
+}

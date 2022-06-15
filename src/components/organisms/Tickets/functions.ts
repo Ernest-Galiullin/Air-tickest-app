@@ -52,10 +52,8 @@ export const filterByDepartureDay = (
   departureDay: number | null
 ) => {
   return filtredData.filter(item => {
-    if (getUTCDate(item.info.dateStart) === getUTCDate(departureDay!)) {
-      console.log(item.info.dateStart)
+    if (getUTCDate(item.info.dateStart) === getUTCDate(departureDay!))
       return item
-    }
   })
 }
 
