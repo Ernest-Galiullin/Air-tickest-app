@@ -2,7 +2,7 @@ import { ReactNode, SyntheticEvent } from 'react'
 import cn from 'classnames'
 import './style.scss'
 
-type CheckboxProps = {
+interface ICheckboxProps {
   children: ReactNode
   checked: boolean
   id: number
@@ -14,7 +14,7 @@ export default function Checkbox({
   checked,
   onChange,
   id
-}: CheckboxProps) {
+}: ICheckboxProps) {
   return (
     <label className="chekbox-label">
       <input
@@ -23,7 +23,6 @@ export default function Checkbox({
         defaultChecked={checked}
         onChange={onChange}
         data-id={id}
-        // id={String(id)}
       />
       <span className={cn('chekbox-checkmark', checked && 'active')}></span>
       {children}

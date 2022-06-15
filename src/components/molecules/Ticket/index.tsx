@@ -1,10 +1,10 @@
 import { TCityCodes } from 'interfaces'
 import s7 from 'assets/companies/S7 Logo.png'
 import xiamenAir from 'assets/companies/XiamenAir Logo.png'
-import './style.scss'
 import { convertMsToHM, getTime, isTransplants } from './functions'
+import './style.scss'
 
-type TicketProps = {
+interface ITicketProps {
   id: string
   price: number
   companyId: string
@@ -28,7 +28,7 @@ function Img(props: { id: string }) {
   return null
 }
 
-export default function Ticket(props: TicketProps) {
+export default function Ticket(props: ITicketProps) {
   return (
     <div className="ticket">
       <div className="ticket__header">

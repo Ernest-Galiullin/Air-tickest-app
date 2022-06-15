@@ -2,7 +2,11 @@ import { useState } from 'react'
 import ReactCalendar from 'react-calendar'
 import './style.scss'
 
-export default function Calendar(props: any) {
+interface ICalendarProps {
+  onClick: (date: Date) => void
+}
+
+export default function Calendar(props: ICalendarProps) {
   const [value, onChange] = useState(new Date())
 
   return (

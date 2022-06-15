@@ -1,12 +1,10 @@
-import arrowRigth from 'assets/arrow-right.svg'
-import arrowLeft from 'assets/arrow-left.svg'
 import './style.scss'
 
-interface IProps {
+interface ISwapIconProps {
   handleClick: (value: any) => void
 }
 
-export default function SwapIcon(props: IProps) {
+export default function SwapIcon(props: ISwapIconProps) {
   return (
     <div className="swap-icon" onClick={props.handleClick}>
       <div className="arrow__animate">

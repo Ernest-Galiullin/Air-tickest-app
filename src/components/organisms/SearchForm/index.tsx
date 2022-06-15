@@ -1,6 +1,6 @@
 import SwapIcon from 'components/atoms/SwapIcon'
 import Select from 'components/atoms/Select'
-import InputDate from 'components/molecules/InputDate'
+import DataInput from 'components/molecules/InputDate'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import {
   swapInputValue,
@@ -57,10 +57,10 @@ export default function SearchForm() {
         />
       </div>
       <div className="search-form__column search-form__column--date">
-        <InputDate id="destination" placeholder="Когда" />
+        <DataInput id="destination" placeholder="Когда" />
       </div>
       <div className="search-form__column search-form__column--date">
-        <InputDate id="return" placeholder="Обратно" />
+        <DataInput id="return" placeholder="Обратно" />
       </div>
     </form>
   )

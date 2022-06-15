@@ -4,13 +4,13 @@ import { useAppDispatch } from 'store/hooks'
 import Calendar from '../Calendar'
 import { getPrettyDate } from './functions'
 
-interface IProps {
+interface IDateInputProps {
   id: string
   placeholder?: string
   date?: number | null
 }
 
-export default function InputDate(props: IProps) {
+export default function DataInput(props: IDateInputProps) {
   const dispatch = useAppDispatch()
   const [inputValue, setInputValue] = useState('')
   const [closeCalendar, setCloseCalendar] = useState(false)
@@ -19,7 +19,7 @@ export default function InputDate(props: IProps) {
     setCloseCalendar(prev => !prev)
   }
 
-  const handleClickCalendar = (date: any) => {
+  const handleClickCalendar = (date: Date) => {
     if (props.id === 'destination') {
       dispatch(updateDepartureDay(date.valueOf()))
     } else {

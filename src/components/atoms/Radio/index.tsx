@@ -2,12 +2,12 @@ import { ReactNode, SyntheticEvent } from 'react'
 import { useAppSelector } from 'store/hooks'
 import cn from 'classnames'
 import './style.scss'
-type RadioProps = {
+interface IRadioProps {
   children: ReactNode
   id: string
   onClick: (event: SyntheticEvent<HTMLLabelElement>) => void
 }
-export default function Radio({ children, id, onClick }: RadioProps) {
+export default function Radio({ children, id, onClick }: IRadioProps) {
   const { selectedCompany } = useAppSelector(state => state.filter)
   return (
     <label className="radio-label" onClick={onClick}>

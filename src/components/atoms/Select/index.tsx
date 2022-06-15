@@ -4,7 +4,7 @@ import { selectFilter } from 'store/filterSlice'
 import { useAppSelector } from 'store/hooks'
 import './style.scss'
 
-interface IProp {
+interface ISelectProps {
   value: string
   handleChange(option: any, name: string): void
   name: string
@@ -16,7 +16,7 @@ interface IProp {
   border?: string
 }
 
-export default function SelectInput(props: IProp) {
+export default function SelectInput(props: ISelectProps) {
   const { selectedOriginCity, selectedDestinationCity } =
     useAppSelector(selectFilter)
 
