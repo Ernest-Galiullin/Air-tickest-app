@@ -1,3 +1,4 @@
+import { SyntheticEvent } from 'react'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import { updateTransparents } from 'store/transparentsSlice'
 import Checkbox from '../../atoms/Checkbox'
@@ -7,8 +8,10 @@ export default function Transparents() {
   const transparents = useAppSelector(state => state.transparents.transparents)
   const dispatch = useAppDispatch()
 
-  const handleChange = (event: any): void => {
-    const id = Number(event.target.id)
+  const handleChange = (event: SyntheticEvent<HTMLInputElement>): void => {
+    if (!(event.target instanceof HTMLInputElement)) return
+
+    const id = event.target.dataset.id
     dispatch(updateTransparents(id))
   }
 

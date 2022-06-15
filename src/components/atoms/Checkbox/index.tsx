@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, SyntheticEvent } from 'react'
 import cn from 'classnames'
 import './style.scss'
 
@@ -6,7 +6,7 @@ type CheckboxProps = {
   children: ReactNode
   checked: boolean
   id: number
-  onChange: (event: any) => void
+  onChange: (event: SyntheticEvent<HTMLInputElement>) => void
 }
 
 export default function Checkbox({
@@ -22,7 +22,8 @@ export default function Checkbox({
         type="checkbox"
         defaultChecked={checked}
         onChange={onChange}
-        id={String(id)}
+        data-id={id}
+        // id={String(id)}
       />
       <span className={cn('chekbox-checkmark', checked && 'active')}></span>
       {children}
