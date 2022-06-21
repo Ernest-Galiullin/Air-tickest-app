@@ -1,0 +1,14 @@
+.custom-select {
+  &__placeholder {
+    font-size: 15px !important;
+  }
+  &__control {
+    height: 100%;
+    &--is-focused {
+      box-shadow: 0 0 0 1.5px #ff6f32 !important;
+    }
+  }
+  &__menu {
+    max-width: 238px;
+  }
+}

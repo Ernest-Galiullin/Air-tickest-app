@@ -1,9 +1,14 @@
-import React, {ReactNode} from 'react'
+import { ReactNode, SyntheticEvent } from 'react'
 import './style.scss'
-type ButtonProps = {
+interface IButtonProps {
   children: ReactNode
+  onClick: (event?: SyntheticEvent<HTMLButtonElement>) => void
 }
 
-export default function Button({children}: ButtonProps) {
-  return <button className="btn">{children}</button>
+export default function Button({ children, onClick }: IButtonProps) {
+  return (
+    <button className="btn" onClick={onClick}>
+      {children}
+    </button>
+  )
 }

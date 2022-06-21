@@ -1,30 +1,30 @@
-import {ReactNode, useState} from 'react'
+import { ReactNode, SyntheticEvent } from 'react'
 import cn from 'classnames'
 import './style.scss'
 
-type CheckboxProps = {
-  id: string
+interface ICheckboxProps {
   children: ReactNode
   checked: boolean
+  id: number
+  onChange: (event: SyntheticEvent<HTMLInputElement>) => void
 }
 
-export default function Checkbox({id, children, checked}: CheckboxProps) {
-  const [state, setState] = useState(checked)
-
-  const handleChange = (event: any) => {
-    setState(event.target.checked)
-  }
-
+export default function Checkbox({
+  children,
+  checked,
+  onChange,
+  id
+}: ICheckboxProps) {
   return (
     <label className="chekbox-label">
       <input
         className="chekbox-input"
         type="checkbox"
-        id={id}
-        defaultChecked={state}
-        onChange={event => handleChange(event)}
+        defaultChecked={checked}
+        onChange={onChange}
+        data-id={id}
       />
-      <span className={cn('chekbox-checkmark', state && 'active')}></span>
+      <span className={cn('chekbox-checkmark', checked && 'active')}></span>
       {children}
     </label>
   )

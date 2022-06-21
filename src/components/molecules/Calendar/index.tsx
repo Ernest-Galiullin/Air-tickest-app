@@ -1,34 +1,24 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import ReactCalendar from 'react-calendar'
 import './style.scss'
 
-function orderWeek(date: string) {
-  const week = date.slice(0, 4).slice(0, 2)
-  return `${date.slice(4, 10)}, ${week}`
+interface ICalendarProps {
+  onClick: (date: Date) => void
 }
 
-export default function Calendar(props: any) {
-  const [value, setData] = useState(new Date())
-
-  const handleChange = (data: typeof value) => {
-    const options: any = {
-      day: 'numeric',
-      month: 'long',
-      weekday: 'short'
-    }
-    const selectDate = orderWeek(data.toLocaleDateString('ru-RU', options))
-    props.onChange(selectDate)
-    setData(data)
-  }
+export default function Calendar(props: ICalendarProps) {
+  const [value, onChange] = useState(new Date())
 
   return (
     <div className="calendar">
       <ReactCalendar
-        onChange={handleChange}
+        onChange={onChange}
         value={value}
         locale={'ru-RU'}
         prev2Label={null}
         next2Label={null}
+        minDate={new Date()}
+        onClickDay={props.onClick}
       />
     </div>
   )

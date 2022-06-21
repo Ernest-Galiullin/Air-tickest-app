@@ -1,3 +1,5 @@
+import './style.scss'
+
 export default function Logo() {
   return (
     <svg
@@ -5,7 +7,8 @@ export default function Logo() {
       height="89"
       viewBox="0 0 82 89"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g filter="url(#filter0_d_2_143)">
         <path
           fillRule="evenodd"
@@ -28,14 +31,14 @@ export default function Logo() {
           strokeWidth="4"
         />
       </g>
-      {/* style="mask-type:alpha" */}
       <mask
         id="mask0_2_143"
         maskUnits="userSpaceOnUse"
         x="11"
         y="10"
         width="60"
-        height="60">
+        height="60"
+      >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -77,14 +80,14 @@ export default function Logo() {
         d="M51.1946 29.0278C51.3946 28.9123 51.6151 28.8406 51.8456 28.8261C52.8621 28.7621 55.798 28.678 56.4347 29.7809C57.0715 30.8838 55.5298 33.3837 54.966 34.2314C54.8383 34.4235 54.666 34.5784 54.4662 34.6938L48.3904 38.2016L49.2343 55.302C49.2461 55.5414 49.125 55.7679 48.9193 55.8911L47.67 56.6393C47.5055 56.7379 47.3057 56.7586 47.1244 56.696L46.1776 56.369C46.019 56.3143 45.8877 56.2002 45.8114 56.0508L39.3534 43.4192L32.9843 47.0964L32.2974 51.7678C32.2498 52.0912 31.9693 52.3288 31.6426 52.3226L31.1446 52.3132C30.8927 52.3084 30.6663 52.1583 30.5638 51.9282L28.7741 47.9122C27.5439 47.9515 26.3891 47.8306 26.0792 47.294C25.7697 46.7579 26.2429 45.7021 26.893 44.6611L24.3295 41.1301C24.1815 40.9263 24.1648 40.6552 24.2866 40.4347L24.5274 39.9987C24.6854 39.7126 25.0314 39.5886 25.3352 39.709L29.6974 41.4392L36.0779 37.7555L28.4192 25.9267C28.328 25.7858 28.2948 25.6152 28.3267 25.4504L28.517 24.4669C28.5534 24.2786 28.6712 24.116 28.8389 24.0228L30.1115 23.315C30.321 23.1984 30.5777 23.2068 30.7791 23.3368L45.0768 32.5599L51.1946 29.0278Z"
         fill="white"
       />
-      {/* style="mask-type:alpha" */}
       <mask
         id="mask1_2_143"
         maskUnits="userSpaceOnUse"
         x="24"
         y="23"
         width="33"
-        height="34">
+        height="34"
+      >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -135,7 +138,8 @@ export default function Logo() {
           width="66"
           height="66"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB">
+          colorInterpolationFilters="sRGB"
+        >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
@@ -168,7 +172,8 @@ export default function Logo() {
           width="82"
           height="82"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB">
+          colorInterpolationFilters="sRGB"
+        >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"

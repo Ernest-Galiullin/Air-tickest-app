@@ -1,8 +1,10 @@
-import {TCityCodes} from 'interfaces'
-import img from 'assets/companies/s7.png'
+import { TCityCodes } from 'interfaces'
+import s7 from 'assets/companies/S7 Logo.png'
+import xiamenAir from 'assets/companies/XiamenAir Logo.png'
+import { convertMsToHM, getTime, isTransplants } from './functions'
 import './style.scss'
 
-type TicketProps = {
+interface ITicketProps {
   id: string
   price: number
   companyId: string
@@ -16,36 +18,22 @@ type TicketProps = {
   }
 }
 
-const getTime = (date: any) => new Date(date).toLocaleTimeString().slice(0, 5)
-
-function convertMsToHM(milliseconds: number) {
-  let seconds = Math.floor(milliseconds / 1000)
-  let minutes = Math.floor(seconds / 60)
-  let hours = Math.floor(minutes / 60)
-
-  seconds = seconds % 60
-
-  minutes = seconds >= 30 ? minutes + 1 : minutes
-
-  minutes = minutes % 60
-
-  hours = hours % 24
-
-  if (hours) {
-    return `${hours}ч ${minutes}м`
-  } else {
-    return ` ${minutes}м`
+function Img(props: { id: string }) {
+  if (props.id === '7dc12d0b-ce42-48a0-8673-0dad4d698764') {
+    return <img src={xiamenAir} alt={props.id} />
   }
+  if (props.id === 'cddfa038-823b-43b1-b18d-395731881077') {
+    return <img src={s7} alt={props.id} />
+  }
+  return null
 }
 
-const isTransplants = (transplants: number): boolean => transplants === 0
-
-export default function Ticket(props: TicketProps) {
+export default function Ticket(props: ITicketProps) {
   return (
     <div className="ticket">
       <div className="ticket__header">
         <div className="ticket__price">{props.price} Р</div>
-        <img src={img} alt={props.companyId} />
+        <Img id={props.companyId} />
       </div>
       <div className="ticket__body">
         <div className="ticket__route">
@@ -66,7 +54,9 @@ export default function Ticket(props: TicketProps) {
           <div className="transfer__title">
             {isTransplants(props.info.stops.length)
               ? 'Без пересадок'
-              : `${props.info.stops.length} пересадки`}
+              : `${props.info.stops.length} ${
+                  props.info.stops.length === 1 ? 'пересадка' : 'пересадки'
+                }`}
           </div>
           <div className="transfer__body">
             <b>
