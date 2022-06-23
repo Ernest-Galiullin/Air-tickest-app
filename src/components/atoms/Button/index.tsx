@@ -2,7 +2,7 @@ import { ReactNode, SyntheticEvent } from 'react'
 import './style.scss'
 interface IButtonProps {
   children: ReactNode
-  onClick: (event?: SyntheticEvent<HTMLButtonElement>) => void
+  onClick?: (event?: SyntheticEvent<HTMLButtonElement>) => void
 }
 
 export default function Button({ children, onClick }: IButtonProps) {
