@@ -1,19 +1,26 @@
 import SwapIcon from 'components/atoms/SwapIcon'
 import Select from 'components/atoms/Select'
-import DataInput from 'components/molecules/InputDate'
+import DataInput from 'components/molecules/DatePicker'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import {
+  selectDepartureDay,
+  selectDestinationCity,
+  selectOriginCity,
   swapInputValue,
+  updateDepartureDay,
   updateDestination,
-  updateOrigin
+  updateOrigin,
+  updateReturnDay
 } from 'store/filterSlice'
 import { ISelectOptions } from 'interfaces'
+import { selectFilteredOptions } from 'store/citiOptionsSlice'
 import './style.scss'
 
 export default function SearchForm() {
-  const { selectedOriginCity, selectedDestinationCity } = useAppSelector(
-    state => state.filter
-  )
+  const originCity = useAppSelector(selectOriginCity)
+  const destinationCity = useAppSelector(selectDestinationCity)
+  const optionsCiteCodes = useAppSelector(selectFilteredOptions)
+  const departureDay = useAppSelector(selectDepartureDay)
   const dispatch = useAppDispatch()
 
   const handleChangeInput = (
@@ -26,16 +33,23 @@ export default function SearchForm() {
       dispatch(updateDestination(selectedOption))
     }
   }
-
   const handleClickSwap = () => {
-    dispatch(swapInputValue({ selectedOriginCity, selectedDestinationCity }))
+    if (originCity && destinationCity) {
+      dispatch(swapInputValue({ originCity, destinationCity }))
+    }
   }
-
+  const handleClickDestination = (date: Date) => {
+    dispatch(updateDepartureDay(date.valueOf()))
+  }
+  const handleClickReturn = (date: Date) => {
+    dispatch(updateReturnDay(date.valueOf()))
+  }
   return (
     <form className="search-form">
       <div className="search-form__column">
         <Select
-          selectedOptions={selectedOriginCity}
+          value={originCity}
+          options={optionsCiteCodes}
           name="origin"
           handleChange={handleChangeInput}
           borderTopLeftRadius="5px"
@@ -48,17 +62,29 @@ export default function SearchForm() {
       </div>
       <div className="search-form__column">
         <Select
-          selectedOptions={selectedDestinationCity}
+          value={destinationCity}
+          options={optionsCiteCodes}
           name="destination"
           handleChange={handleChangeInput}
           placeholder="Куда"
         />
       </div>
       <div className="search-form__column search-form__column--date">
-        <DataInput id="destination" placeholder="Когда" />
+        <DataInput
+          name="destination"
+          placeholder="Когда"
+          handleChange={handleClickDestination}
+        />
+        <span className="date"></span>
       </div>
       <div className="search-form__column search-form__column--date">
-        <DataInput id="return" placeholder="Обратно" />
+        <DataInput
+          name="return"
+          placeholder="Обратно"
+          handleChange={handleClickReturn}
+          minDate={departureDay}
+        />
+        <span className="date"></span>
       </div>
     </form>
   )
