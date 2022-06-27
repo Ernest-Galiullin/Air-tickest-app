@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
-import Radio from 'components/atoms/Radio'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
 import { updateCompanies, updateSelectCompany } from 'store/filterSlice'
+import Radio from 'components/atoms/Radio'
 import { fetchCompanies } from 'api/apiCompanies'
 import './style.scss'
 
@@ -40,7 +40,9 @@ export default function Companies() {
     <div className="u-full-width companies">
       <div className="companies__title">Компания</div>
       <div className="companies__list">
-        <Radio children={'Все'} id="" onClick={handleClickCompany} />
+        <Radio id="" onClick={handleClickCompany}>
+          Все{' '}
+        </Radio>
         {companiesList}
       </div>
     </div>

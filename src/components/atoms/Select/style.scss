@@ -2,6 +2,9 @@
   &__placeholder {
     font-size: 15px !important;
   }
+  &__indicators {
+    display: none !important;
+  }
   &__control {
     height: 100%;
     &--is-focused {

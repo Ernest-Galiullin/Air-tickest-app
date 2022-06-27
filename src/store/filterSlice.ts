@@ -4,20 +4,20 @@ import { RootState } from 'store'
 
 interface IFilterState {
   companies: ICompany[]
-  selectedOriginCity: ISelectOptions
-  selectedDestinationCity: ISelectOptions
-  selectedCompany: string
-  selectedDepartureDay: number | null
-  selectedReturnDay: number | null
+  cityOrigin: ISelectOptions
+  cityDestination: ISelectOptions
+  company: string
+  dayDeparture: number | null
+  dayReturn: number | null
 }
 
 const initialState: IFilterState = {
   companies: [],
-  selectedOriginCity: { value: '', label: '' },
-  selectedDestinationCity: { value: '', label: '' },
-  selectedDepartureDay: null,
-  selectedReturnDay: null,
-  selectedCompany: ''
+  cityOrigin: { value: '', label: '' },
+  cityDestination: { value: '', label: '' },
+  dayDeparture: null,
+  dayReturn: null,
+  company: ''
 }
 
 export const filterSlice = createSlice({
@@ -28,28 +28,35 @@ export const filterSlice = createSlice({
       state.companies = action.payload
     },
     updateOrigin(state, action) {
-      state.selectedOriginCity = action.payload
+      state.cityOrigin = action.payload
     },
     updateDestination(state, action) {
-      state.selectedDestinationCity = action.payload
+      state.cityDestination = action.payload
     },
     updateDepartureDay(state, action) {
-      state.selectedDepartureDay = action.payload
+      state.dayDeparture = action.payload
     },
     updateReturnDay(state, action) {
-      state.selectedReturnDay = action.payload
+      state.dayReturn = action.payload
     },
     updateSelectCompany(state, action) {
-      state.selectedCompany = action.payload
+      state.company = action.payload
     },
     swapInputValue(state, action) {
-      state.selectedOriginCity = action.payload.selectedDestinationCity
-      state.selectedDestinationCity = action.payload.selectedOriginCity
+      state.cityOrigin = action.payload.destinationCity
+      state.cityDestination = action.payload.originCity
     }
   }
 })
 
 export const selectFilter = (state: RootState) => state.filter
+export const selectOriginCity = (state: RootState) => state.filter.cityOrigin
+export const selectDestinationCity = (state: RootState) =>
+  state.filter.cityDestination
+export const selectDepartureDay = (state: RootState) =>
+  state.filter.dayDeparture
+export const selectReturnDay = (state: RootState) => state.filter.dayReturn
+export const selectCompanyID = (state: RootState) => state.filter.company
 
 export const {
   updateCompanies,

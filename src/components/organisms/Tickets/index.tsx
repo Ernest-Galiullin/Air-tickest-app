@@ -8,18 +8,25 @@ import { useAppDispatch, useAppSelector } from 'store/hooks'
 import * as functions from './functions'
 import { fetchTickets } from 'api/apiTickets'
 import './style.scss'
+import {
+  selectCompanyID,
+  selectDepartureDay,
+  selectDestinationCity,
+  selectOriginCity,
+  selectReturnDay
+} from 'store/filterSlice'
 
 export default function Tickets() {
   const { status, isLoading, error, data } = useQuery('tickets', fetchTickets)
+
   const { filtredTickets, tickets } = useAppSelector(state => state.tickets)
   const transparentsState = useAppSelector(state => state.transparents)
-  const {
-    selectedOriginCity,
-    selectedDestinationCity,
-    selectedDepartureDay,
-    selectedReturnDay,
-    selectedCompany
-  } = useAppSelector(state => state.filter)
+  const originCity = useAppSelector(selectOriginCity)
+  const destinationCity = useAppSelector(selectDestinationCity)
+  const departureDay = useAppSelector(selectDepartureDay)
+  const returnDay = useAppSelector(selectReturnDay)
+  const companyID = useAppSelector(selectCompanyID)
+
   const dispatch = useAppDispatch()
   const [pagination, setPagination] = useState(5)
 
@@ -36,29 +43,19 @@ export default function Tickets() {
 
   useEffect(() => {
     let filtredData = tickets
-    // Complete Worked
-    if (selectedOriginCity.value && selectedDestinationCity.value) {
-      filtredData = functions.filterByOriginCity(
-        filtredData,
-        selectedOriginCity.value
-      )
+    if (originCity && destinationCity) {
+      filtredData = functions.filterByOriginCity(filtredData, originCity.value)
       filtredData = functions.filterByDestinationCity(
         filtredData,
-        selectedDestinationCity.value
+        destinationCity.value
       )
 
-      if (selectedDepartureDay && selectedReturnDay) {
-        filtredData = functions.filterByDepartureDay(
-          filtredData,
-          selectedDepartureDay
-        )
-        filtredData = functions.filterByReturnDay(
-          filtredData,
-          selectedReturnDay
-        )
+      if (departureDay && returnDay) {
+        filtredData = functions.filterByDepartureDay(filtredData, departureDay)
+        filtredData = functions.filterByReturnDay(filtredData, returnDay)
       }
     }
-    filtredData = functions.filterByCompanyId(filtredData, selectedCompany)
+    filtredData = functions.filterByCompanyId(filtredData, companyID)
     filtredData = functions.filterByTransparents(
       filtredData,
       transparentsState.value
@@ -66,11 +63,11 @@ export default function Tickets() {
 
     dispatch(updateFiltredTickets(filtredData))
   }, [
-    selectedOriginCity.value,
-    selectedDestinationCity.value,
-    selectedDepartureDay,
-    selectedReturnDay,
-    selectedCompany,
+    originCity,
+    destinationCity,
+    departureDay,
+    returnDay,
+    companyID,
     transparentsState.value
   ])
 
